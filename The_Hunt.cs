@@ -84,7 +84,7 @@ public class vampireGame
         
         //INÍCIO DA CENA
         Console.WriteLine("\n");
-        string narration1 = "It's late at night. You're walking the streets of Santa Monica, Los Angeles, as Hunger mercilessly attacks you. In a dark alley near Trip's Pawn Shop, you notice a homeless man seeking refuge from the cold. This is your perfect opportunity, but you have to sneak up on him.";
+        string narration1 = "It's late at night. You're walking the streets of Santa Monica, Los Angeles, as Hunger mercilessly attacks you. In a dark alley near Trip's Pawn Shop, you notice a homeless man seeking refuge from the cold. This is the perfect opportunity to hunt, but you have to sneak up on him.";
         
         // Escreve a mensagem letra à letra.
         foreach (char letra in narration1)
@@ -142,7 +142,7 @@ public class vampireGame
          //FIM DA CENA
          if(totalSuccesses >= testDifficulty){
              Console.WriteLine("SUCCESS!!!\n");
-             string narration2 = "You managed to sneak up on him and, as quick as a wildcat, bit his neck and drew a mouthful of blood. You slaked your Hunger once more, and the Beast was sated!";
+             string narration2 = "You managed to sneak up on him and, as quick as a wildcat, bit his neck and drew a mouthful of blood. You slaked your Hunger once more! However, the blood loss caused the already very weak homeless to die. You satisfied your Hunger, the Beast is silent for once, but at the cost of an innocent life.";
         
             // Escreve a mensagem letra à letra.
             foreach (char letra in narration2)
@@ -150,7 +150,18 @@ public class vampireGame
                 Console.Write(letra);
                 Thread.Sleep(100); 
             }
-         } else {
+         } else if (totalSuccesses >= testDifficulty && criticalSuccess > 0) {
+             Console.WriteLine("CRITICAL SUCCESS!!!\n");
+             string narration2 = "You move swiftly, leaving no trace! You gently bite the homeless' neck and take enough to satisfy your Hunger without causing him to lose his life from blood loss. Your Hunger is slightly sated, your Beast still cries out for more, but you emerge from this still human, with your Humanity intact.";
+        
+            // Escreve a mensagem letra à letra.
+            foreach (char letra in narration2)
+            {
+                Console.Write(letra);
+                Thread.Sleep(100); 
+            }
+         }
+         else {
             Console.WriteLine("FAILURE!!!\n");
              string narration3 = "The homeless notice you creeping upon him and shouts \"ARGH! A CRAB NIPPLE!!!\", a police officer near the scene catches the scream and rush towards the alley, but you are long gone, closing the manhole to the sewers. The Beast is hungry! Rat blood will have to suffice.";
         
