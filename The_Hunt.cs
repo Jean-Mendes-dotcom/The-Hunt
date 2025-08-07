@@ -15,6 +15,7 @@ public class vampireGame
         int normalSuccess = 0; //Resultado das rolagens normais
         int criticalSuccess = 0; //Resultado das rolagens críticas
         int tensCounter = 0; //Conta resultados 10 nos testes
+        int onesCounter = 0; //Conta resultados 1 nos testes
         int totalSuccesses = 0; //Soma dos sucessos normais e críticos
         
         //###############################################################
@@ -83,7 +84,7 @@ public class vampireGame
         //###############################################################
         
         //INÍCIO DA CENA
-        Console.WriteLine("\n");
+        Console.WriteLine();
         string narration1 = "It's late at night. You're walking the streets of Santa Monica, Los Angeles, as Hunger mercilessly attacks you. In a dark alley near Trip's Pawn Shop, you notice a homeless man seeking refuge from the cold. This is the perfect opportunity to hunt, but you have to sneak up on him.";
         
         // Escreve a mensagem letra à letra.
@@ -113,6 +114,10 @@ public class vampireGame
              if(result == 10) {tensCounter += 1;}
          }
          criticalSuccess = (tensCounter / 2) * 2;
+         
+         foreach(int oneResult in testResults) {
+             if(oneResult == 1) {onesCounter += 1;}
+         }
         
          //Determina o Sucesso Total
          totalSuccesses = normalSuccess + criticalSuccess;
@@ -132,7 +137,7 @@ public class vampireGame
             else {showResults.Add("ERROR!!!");}
          }
          
-         Console.Write("\nDice Results: ");
+         Console.Write("Dice Results: ");
          Console.WriteLine(string.Join(" ", showResults));
          Console.WriteLine($"Number of Successes: {totalSuccesses}");
          Console.WriteLine($"Test Difficulty: {testDifficulty}");
@@ -140,7 +145,7 @@ public class vampireGame
          //###############################################################
          
          //FIM DA CENA
-         if(totalSuccesses >= testDifficulty){
+         if(totalSuccesses >= testDifficulty && criticalSuccess == 0){
              Console.WriteLine("SUCCESS!!!\n");
              string narration2 = "You managed to sneak up on him and, as quick as a wildcat, bit his neck and drew a mouthful of blood. You slaked your Hunger once more! However, the blood loss caused the already very weak homeless to die. You satisfied your Hunger, the Beast is silent for once, but at the cost of an innocent life and a piece of your already dim Humanity.";
         
@@ -152,10 +157,20 @@ public class vampireGame
             }
          } else if (totalSuccesses >= testDifficulty && criticalSuccess > 0) {
              Console.WriteLine("CRITICAL SUCCESS!!!\n");
-             string narration2 = "You move swiftly, leaving no trace! You gently bite the homeless' neck and take enough to satisfy your Hunger without causing him to lose his life from blood loss. Your Hunger is slightly sated, your Beast still cries out for more, but you emerge from this still human, with your Humanity intact.";
+             string narration3 = "You move swiftly, leaving no trace! You gently bite the homeless' neck and take enough to satisfy your Hunger without causing him to lose his life from blood loss. Your Hunger is slightly sated, your Beast still cries out for more, but you emerge from this still human, with your Humanity intact.";
         
             // Escreve a mensagem letra à letra.
-            foreach (char letra in narration2)
+            foreach (char letra in narration3)
+            {
+                Console.Write(letra);
+                Thread.Sleep(100); 
+            }
+         } else if (totalSuccesses == 0 && onesCounter > 0) {
+             Console.WriteLine("TOTAL FAILURE!!!\n");
+             string narration4 = "You were so thirsty! You lunged violently at the homeless man. You engaged in a struggle that drew the attention of a nearby guard. You heard a scream and an order to release the victim and raise your hands. Desperate and frustrated, you ran toward the manhole cover as shots rang out over your shoulder. You were defeated today, completely! The dirty blood of the rats will have to suffice.";
+        
+            // Escreve a mensagem letra à letra.
+            foreach (char letra in narration4)
             {
                 Console.Write(letra);
                 Thread.Sleep(100); 
@@ -163,10 +178,10 @@ public class vampireGame
          }
          else {
             Console.WriteLine("FAILURE!!!\n");
-             string narration3 = "The homeless notice you creeping upon him and shouts \"ARGH! A CRAB NIPPLE!!!\", a police officer near the scene catches the scream and rush towards the alley, but you are long gone, closing the manhole to the sewers. The Beast is hungry! Rat blood will have to suffice.";
+             string narration5 = "The homeless notice you creeping upon him and shouts \"ARGH! A CRAB NIPPLE!!!\", a police officer near the scene catches the scream and rush towards the alley, but you are long gone, closing the manhole to the sewers. The Beast is hungry! Rat blood will have to suffice.";
         
             // Escreve a mensagem letra à letra.
-            foreach (char letra in narration3)
+            foreach (char letra in narration5)
             {
                 Console.Write(letra);
                 Thread.Sleep(100); 
