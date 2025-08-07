@@ -132,7 +132,7 @@ public class vampireGame
             else {showResults.Add("ERROR!!!");}
          }
          
-         Console.Write("Dice Results: ");
+         Console.Write("\nDice Results: ");
          Console.WriteLine(string.Join(" ", showResults));
          Console.WriteLine($"Number of Successes: {totalSuccesses}");
          Console.WriteLine($"Test Difficulty: {testDifficulty}");
@@ -142,7 +142,7 @@ public class vampireGame
          //FIM DA CENA
          if(totalSuccesses >= testDifficulty){
              Console.WriteLine("SUCCESS!!!\n");
-             string narration2 = "You managed to sneak up on him and, as quick as a wildcat, bit his neck and drew a mouthful of blood. You slaked your Hunger once more! However, the blood loss caused the already very weak homeless to die. You satisfied your Hunger, the Beast is silent for once, but at the cost of an innocent life.";
+             string narration2 = "You managed to sneak up on him and, as quick as a wildcat, bit his neck and drew a mouthful of blood. You slaked your Hunger once more! However, the blood loss caused the already very weak homeless to die. You satisfied your Hunger, the Beast is silent for once, but at the cost of an innocent life and a piece of your already dim Humanity.";
         
             // Escreve a mensagem letra à letra.
             foreach (char letra in narration2)
